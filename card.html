@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <div id="Container">
+        
+    </div>
+    <body>
+        <script>
+            console.log(document.URL)
+             var searchparams=location.search;
+            // console.log(location)
+             var urlparams=searchparams.split("=");
+             console.log(urlparams)
+             var id=urlparams[urlparams.length-1];
+            var http=new XMLHttpRequest();
+            http.open("GET","https://jsonplaceholder.typicode.com/users/"+id);
+            http.responseType="json";
+            http.send();
+            http.onload=function(){
+                var response=http.response;
+                var divelement="";
+               var val=response;
+                    divelement ="<div>"+val.id+"</div>"+"<div>"+val.name+"</div>"+"<div>"+val.username+"</div>"
+                
+                document.getElementById("Container").innerHTML=divelement;
+            }
+        </script>
+    </body>
+</html> 
+
